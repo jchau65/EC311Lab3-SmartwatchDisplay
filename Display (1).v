@@ -1,3 +1,28 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/08/2026 09:19:18 PM
+// Design Name: 
+// Module Name: Display
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+// TODO: CREATE LOGIC FOR EDIT FIELD, MADE IN THE BOTTOM CASE SWITCH FOR EACH STATE
+
 module Display(
     input wire clk,
     input wire rst,
@@ -24,9 +49,9 @@ module Display(
     localparam S_TIME = 8'b01000000;
     localparam S_HOUR = 8'b00100000;
     localparam S_MIN  = 8'b00010000;
-    localparam S_DATE = 8'b00001000;
-    localparam S_DAY  = 8'b00000100;
-    localparam S_MONTH= 8'b00000010;
+    localparam S_DATE = 8'b00001000; // displays the date
+    localparam S_MONTH  = 8'b00000100;
+    localparam S_DAY= 8'b00000010; // day edit
     localparam S_YEAR = 8'b00000001;
     
 
@@ -70,7 +95,7 @@ module Display(
             S_TIME, S_HOUR, S_MIN:
                 digits = {C_BLANK, hh, C_BLANK, C_BLANK, mm, C_BLANK};
             S_DATE, S_DAY, S_MONTH, S_YEAR:
-                digits = {dd, C_BLANK, MM, C_BLANK, yy};
+                digits = {MM, C_BLANK, dd, C_BLANK, yy};
             default: digits = {8{C_BLANK}}; // also cool trick apparently
         endcase
     end
